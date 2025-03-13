@@ -36,13 +36,13 @@ for script in soup.find_all('script'):
             recent_locations = json.loads(recent_locations_json)
             location_name = recent_locations[0]['localizedName']
             temp = recent_locations[0]['temp']
-            celsius_temp = (int(temp) - 32) * 5/9
+            celsius_temp = (int(temp.replace('°', '')) - 32) * 5/9
             realFeel = recent_locations[0]['realFeel']
-            celsius_reelFell = (int(realFeel) - 32) * 5/9
+            celsius_reelFell = (int(realFeel.replace('°', '')) - 32) * 5/9
             print(f'{location_name}|{str(celsius_temp)}|{str(celsius_reelFell)}')
             nd = f'''%f0%9f%8c%8f Địa điểm: {location_name}
-%f0%9f%8c%a1 Nhiệt độ hiện tại: {str(celsius_temp)}
-%f0%9f%8c%a4 Cảm giác như: {str(celsius_reelFell)}'''
+%f0%9f%8c%a1 Nhiệt độ hiện tại: {str(celsius_temp)}°
+%f0%9f%8c%a4 Cảm giác như: {str(celsius_reelFell)}°'''
 with open('bottele1.txt', 'r', encoding='utf-8') as file:
     while True:
         url = file.readline().strip()
