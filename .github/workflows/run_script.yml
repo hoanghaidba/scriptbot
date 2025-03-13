@@ -1,14 +1,16 @@
-name: Run Python Script
+name: Run Weather Bot
 
 on:
   schedule:
-    - cron: "*/5 * * * *"  # Chạy mỗi giờ (bạn có thể chỉnh sửa thời gian)
+    - cron: "*/5 * * * *"  # Chạy mỗi 3 giờ một lần
+  workflow_dispatch:  # Cho phép chạy thủ công
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -16,5 +18,8 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Run Python script
+      - name: Install Dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Run Script
         run: python script.py
