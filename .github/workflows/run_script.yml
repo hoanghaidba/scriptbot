@@ -2,7 +2,7 @@ name: Run Weather Bot
 
 on:
   schedule:
-    - cron: "*/5 * * * *"  # Chạy mỗi 3 giờ một lần
+    - cron: "*/30 * * * *"  # Chạy mỗi 3 giờ một lần
   workflow_dispatch:  # Cho phép chạy thủ công
 
 jobs:
